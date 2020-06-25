@@ -31,6 +31,8 @@ export const typeDefs = gql(`
 
     # The User who submitted the comment
     author: User
+
+    isGif: Boolean
   }
 
   scalar Date
