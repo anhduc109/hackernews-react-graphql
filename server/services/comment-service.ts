@@ -38,7 +38,6 @@ export abstract class CommentService {
       submitterId,
     });
 
-    // console.log('news', await context.NewsItemService.getNewsItem(id));
     const parentNews = await context.NewsItemService.getNewsItem(comment.parent);
 
     if (parentNews) {

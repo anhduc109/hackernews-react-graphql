@@ -30,7 +30,8 @@ export function CommentBox(props: ICommentsBoxProps): JSX.Element {
           action="comment"
           onSubmit={(e) => {
             e.preventDefault();
-            return text.trim() !== '' ? postComment() : alert('Cannot post an empty comment!');
+            text.trim() !== '' ? postComment() : alert('Cannot post an empty comment!');
+            return Router.reload();
           }}
         >
           <input type="hidden" name="parent" value="15237896" />
