@@ -10,6 +10,7 @@ export interface ICommentProps {
   indentationLevel: number;
   submitterId: string;
   text: string;
+  isGif: boolean;
 }
 
 export const commentFragment = `
@@ -29,7 +30,7 @@ export const commentFragment = `
 
 export class Comment extends React.Component<ICommentProps> {
   render(): JSX.Element {
-    const { id, creationTime, indentationLevel, submitterId, text } = this.props;
+    const { id, creationTime, indentationLevel, submitterId, text, isGif } = this.props;
 
     const vote = (): void => {
       return undefined;
@@ -87,7 +88,7 @@ export class Comment extends React.Component<ICommentProps> {
                   <br />
                   <div className="comment">
                     <span className="c00">
-                      <span>{renderHTML(text)}</span>
+                      {isGif ? <img alt={text} src={text} /> : <span>{renderHTML(text)}</span>}
                       <div className="reply">
                         <p style={{ fontSize: '1' }}>
                           <u>
