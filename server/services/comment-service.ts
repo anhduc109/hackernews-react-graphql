@@ -34,6 +34,7 @@ export abstract class CommentService {
       id,
       parent: comment.parent,
       text: comment.text,
+      isGif: comment.isGif,
       creationTime: Date.now(),
       submitterId,
     });

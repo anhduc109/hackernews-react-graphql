@@ -6,7 +6,7 @@
 import { CommentModel, NewsItemModel, UserModel } from './models';
 
 export const sampleData: {
-  comments: CommentModel[];
+  comments: Partial<CommentModel>[];
   top: number[];
   new: number[];
   topStoriesCache: NewsItemModel[];
