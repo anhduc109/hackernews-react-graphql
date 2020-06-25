@@ -161,6 +161,13 @@ export const typeDefs = gql(`
       url: String
       text: String
     ): NewsItem
+
+    postComment(
+      id: Int!
+      parent: Int!
+      submitterId: Int!
+      text: String!
+    ): Comment
   }
 `);
 

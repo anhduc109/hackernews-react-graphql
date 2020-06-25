@@ -15,10 +15,11 @@ export function CommentBox(props: ICommentsBoxProps): JSX.Element {
   const [text, setText] = React.useState('');
 
   const [postComment] = useMutation(POST_COMMENT_MUTATION, {
-    onError() {
-      Router.push('/login');
+    onError(error) {
+      console.log(error);
+      // Router.push('/login');
     },
-    variables: { parent: 1, submitterId: 1, text },
+    variables: { id: 999, parent: 1321321, submitterId: 112321, text },
   });
 
   return (
