@@ -23,4 +23,10 @@ export abstract class CommentService {
       )
       .catch((reason) => logger('Rejected comments:', reason));
   }
+
+  // static postComment(id: number) {
+  //   CacheSingleton.setComment(id, newComment);
+
+  //   return newComment;
+  // }
 }

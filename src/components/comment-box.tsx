@@ -1,6 +1,13 @@
 import * as React from 'react';
+import { NewsItemModel } from '../data/models';
 
-export function CommentBox(): JSX.Element {
+export interface ICommentsBoxProps {
+  newsItem: NewsItemModel;
+}
+
+export function CommentBox(props: ICommentsBoxProps): JSX.Element {
+  const { newsItem } = props;
+
   return (
     <tr>
       <td colSpan={2} />
