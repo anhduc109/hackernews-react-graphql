@@ -13,13 +13,14 @@ export interface ICommentsBoxProps {
 export function CommentBox(props: ICommentsBoxProps): JSX.Element {
   const { newsItem } = props;
 
-  const [text, setText] = React.useState('');
+  const [text, setText] = React.useState<string>('');
+  const [isGif, setIsGif] = React.useState<boolean>(false);
 
   const [postComment] = useMutation(POST_COMMENT_MUTATION, {
     onError(error) {
       Router.push('/login');
     },
-    variables: { id: 999, parent: newsItem.id, text },
+    variables: { id: 999, parent: newsItem.id, text, isGif },
   });
 
   return (
@@ -48,7 +49,7 @@ export function CommentBox(props: ICommentsBoxProps): JSX.Element {
           <br />
           <br />
           <input type="submit" value="add comment" />
-          <Picker onSelected={(item) => setText(item)} />
+          {/* <Picker onSelected={(item) => setText(item)} /> */}
         </form>
       </td>
     </tr>

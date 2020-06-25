@@ -165,6 +165,7 @@ export const typeDefs = gql(`
     postComment(
       parent: Int!
       text: String!
+      isGif: Boolean!
     ): Comment
   }
 `);
