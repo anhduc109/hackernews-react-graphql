@@ -165,7 +165,6 @@ export const typeDefs = gql(`
     postComment(
       id: Int!
       parent: Int!
-      submitterId: Int!
       text: String!
     ): Comment
   }

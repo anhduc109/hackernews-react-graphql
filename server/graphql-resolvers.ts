@@ -90,13 +90,10 @@ export const resolvers: IResolvers<any, IGraphQlSchemaContext> = {
       return context.NewsItemService.submitNewsItem({ ...newsItem, submitterId: context.userId });
     },
 
-    postComment(_, { id }, context) {
-      console.log(context);
+    postComment(_, comment, context) {
       if (!context.userId) throw new Error('Must be logged in to post a comment.');
 
-      console.log('den duoc day roi');
-
-      // return context.CommentService.({ ...newsItem, submitterId: context.userId });
+      return context.CommentService.postComment(comment, context.userId);
     },
   },
 

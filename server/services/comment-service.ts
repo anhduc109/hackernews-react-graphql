@@ -22,9 +22,17 @@ export abstract class CommentService {
       .catch((reason) => logger('Rejected comments:', reason));
   }
 
-  // static postComment(id: number) {
-  //   CacheSingleton.setComment(id, newComment);
+  static postComment(comment: CommentModel, submitterId: string) {
+    const id = Math.floor(Math.random() * 10000);
+    const newComment = new CommentModel({
+      id,
+      parent: comment.parent,
+      text: comment.text,
+      creationTime: Date.now(),
+    });
 
-  //   return newComment;
-  // }
+    CacheSingleton.setComment(id, newComment);
+
+    return newComment;
+  }
 }
