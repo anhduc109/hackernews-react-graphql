@@ -12,11 +12,13 @@ export interface ICommentsBoxProps {
 export function CommentBox(props: ICommentsBoxProps): JSX.Element {
   const { newsItem } = props;
 
+  const [text, setText] = React.useState('');
+
   const [postComment] = useMutation(POST_COMMENT_MUTATION, {
     onError() {
       Router.push('/login');
     },
-    variables: { parent: 1, submitterId: 1, text: 'hi' },
+    variables: { parent: 1, submitterId: 1, text },
   });
 
   return (
@@ -26,15 +28,15 @@ export function CommentBox(props: ICommentsBoxProps): JSX.Element {
         <form
           method="post"
           action="comment"
-          onSubmit={(e): Promise<any> => {
+          onSubmit={(e) => {
             e.preventDefault();
-            return postComment();
+            return text.trim() !== '' ? postComment() : alert('Cannot post an empty comment!');
           }}
         >
           <input type="hidden" name="parent" value="15237896" />
           <input type="hidden" name="goto" value="item?id=15237896" />
           <input type="hidden" name="hmac" value="02641d0660c89c1a83ccf0d171e42497d10d2135" />
-          <textarea name="text" rows={6} cols={60} />
+          <textarea name="text" onChange={(e) => setText(e.target.value)} rows={6} cols={60} />
           <br />
           <br />
           <input type="submit" value="add comment" />
