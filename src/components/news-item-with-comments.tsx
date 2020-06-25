@@ -45,7 +45,7 @@ export function NewsItemWithComments(props: INewsItemWithCommentsProps): JSX.Ele
             <NewsTitle isRankVisible={false} {...newsItem} />
             <NewsDetail isPostScrutinyVisible {...newsItem} />
             <tr key="morespace" className="morespace" style={{ height: '10px' }} />
-            <CommentBox />
+            <CommentBox newsItem={newsItem} />
           </tbody>
         </table>
         <br />

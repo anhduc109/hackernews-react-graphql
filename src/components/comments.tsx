@@ -34,7 +34,13 @@ export const commentsFragment = `
 export class Comments extends React.Component<ICommentsProps> {
   renderComment = (comment, indent: number): JSX.Element => {
     return (
-      <Comment key={comment.id} parentId={comment.parent} indentationLevel={indent} {...comment} />
+      <Comment
+        key={comment.id}
+        isGif={comment.isGif}
+        parentId={comment.parent}
+        indentationLevel={indent}
+        {...comment}
+      />
     );
   };
 

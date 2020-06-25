@@ -13,6 +13,8 @@ export class CommentModel {
 
   public readonly text: string;
 
+  public readonly isGif: boolean;
+
   constructor(fields) {
     if (!fields.id) {
       throw new Error(`Error instantiating Comment, id invalid: ${fields.id}`);
@@ -31,5 +33,6 @@ export class CommentModel {
     this.submitterId = fields.submitterId;
     this.text = fields.text;
     this.upvotes = fields.upvotes || [];
+    this.isGif = fields.isGif || false;
   }
 }

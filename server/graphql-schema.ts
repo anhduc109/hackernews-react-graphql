@@ -31,6 +31,8 @@ export const typeDefs = gql(`
 
     # The User who submitted the comment
     author: User
+
+    isGif: Boolean
   }
 
   scalar Date
@@ -161,6 +163,12 @@ export const typeDefs = gql(`
       url: String
       text: String
     ): NewsItem
+
+    postComment(
+      parent: Int!
+      text: String!
+      isGif: Boolean!
+    ): Comment
   }
 `);
 
