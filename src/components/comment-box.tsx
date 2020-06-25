@@ -16,7 +16,6 @@ export function CommentBox(props: ICommentsBoxProps): JSX.Element {
 
   const [postComment] = useMutation(POST_COMMENT_MUTATION, {
     onError(error) {
-      console.log(error);
       Router.push('/login');
     },
     variables: { id: 999, parent: newsItem.id, text },

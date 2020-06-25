@@ -163,7 +163,6 @@ export const typeDefs = gql(`
     ): NewsItem
 
     postComment(
-      id: Int!
       parent: Int!
       text: String!
     ): Comment
