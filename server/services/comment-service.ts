@@ -2,7 +2,8 @@ import { debug } from 'debug';
 
 import { CacheSingleton } from '../database/cache';
 import * as HNDB from '../database/hn-data-api';
-import { CommentModel } from '../../src/data/models';
+import { CommentModel, NewsItemModel } from '../../src/data/models';
+import { IGraphQlSchemaContext } from '../graphql-resolvers';
 
 const logger = debug('app:Comment');
 
@@ -22,8 +23,13 @@ export abstract class CommentService {
       .catch((reason) => logger('Rejected comments:', reason));
   }
 
-  static postComment(comment: CommentModel, submitterId: string) {
+  static async postComment(
+    comment: CommentModel,
+    submitterId: string,
+    context: IGraphQlSchemaContext
+  ) {
     const id = Math.floor(Math.random() * 10000);
+
     const newComment = new CommentModel({
       id,
       parent: comment.parent,
@@ -31,6 +37,14 @@ export abstract class CommentService {
       creationTime: Date.now(),
       submitterId,
     });
+
+    // console.log('news', await context.NewsItemService.getNewsItem(id));
+    const parentNews = await context.NewsItemService.getNewsItem(comment.parent);
+
+    if (parentNews) {
+      parentNews.comments.push(id);
+      CacheSingleton.setNewsItem(id, parentNews);
+    }
 
     CacheSingleton.setComment(id, newComment);
 
