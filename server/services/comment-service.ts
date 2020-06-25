@@ -39,8 +39,6 @@ export abstract class CommentService {
       submitterId,
     });
 
-    console.log('toi day', newComment);
-
     const parentNews = await context.NewsItemService.getNewsItem(comment.parent);
 
     if (parentNews) {
