@@ -19,7 +19,7 @@ export function CommentBox(props: ICommentsBoxProps): JSX.Element {
       console.log(error);
       Router.push('/login');
     },
-    variables: { id: 999, parent: 1321321, text },
+    variables: { id: 999, parent: newsItem.id, text },
   });
 
   return (
