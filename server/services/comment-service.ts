@@ -29,6 +29,7 @@ export abstract class CommentService {
       parent: comment.parent,
       text: comment.text,
       creationTime: Date.now(),
+      submitterId,
     });
 
     CacheSingleton.setComment(id, newComment);
