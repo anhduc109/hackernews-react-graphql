@@ -42,7 +42,7 @@ export abstract class CommentService {
     const parentNews = await context.NewsItemService.getNewsItem(comment.parent);
 
     if (parentNews) {
-      parentNews.comments.push(id);
+      parentNews.comments.unshift(id);
       CacheSingleton.setNewsItem(id, parentNews);
     }
 
