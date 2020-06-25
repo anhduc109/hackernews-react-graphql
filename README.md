@@ -8,6 +8,7 @@ https://github.com/anhduc109/hackernews-react-graphql/pull/1
 - Make it possible to comment on posts (stored locally and can be fetched)
   ![](postComment.gif)
 - A part of comment using GIFs
+  ![GIF](giphy.png)
 
 ### What can be improved
 
