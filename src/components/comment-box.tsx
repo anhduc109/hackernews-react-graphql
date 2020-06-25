@@ -26,9 +26,9 @@ export function CommentBox(props: ICommentsBoxProps): JSX.Element {
         <form
           method="post"
           action="comment"
-          onSubmit={(e) => {
+          onSubmit={(e): Promise<any> => {
             e.preventDefault();
-            postComment();
+            return postComment();
           }}
         >
           <input type="hidden" name="parent" value="15237896" />
